@@ -550,6 +550,7 @@
 #include "frame.h"
 #include "utils.hpp"
 #include "homography.h"
+#include <stdint.h>
 using namespace std;
 using namespace cv;
 
@@ -559,55 +560,23 @@ void add(Mat& src, Mat& dst){
 }
 
 int main(){
-//
-//	Mat leftImage = imread("/home/jetski/Documents/Asaf/plane/data/35/set1/35mm_pishpash_long/left/left_53_2018-11-15-09-47-37-895.jpg", 0);
-//	Mat rightImage = imread("/home/jetski/Documents/Asaf/plane/data/35/set1/35mm_pishpash_long/left/right_53_2018-11-15-09-47-37-895.jpg", 0);
-//
-//	imshow("leftImage", leftImage);
-//	waitKey(0);
-	double KmatRef[3][3] = {{6811.10072821551, 0, 961.272247363782 },
-					 {0, 6824.78998611754, 647.340658150072},
-					 {0, 0, 1}};
 
-	double Kmat[3][3] = {{6823.01473173781, 0, 967.153157981033 },
-						 {0, 6835.53522151543, 625.313551182732},
-						 {0, 0, 1}};
+	cout << "asaf" << endl;
 
-	double rotation[3][3] = {{0.999755456172702, -0.00604948034743692, -0.0212704405323284},
-			        {0.00606388484271891, 0.99998142673197, 0.000612773782206468},
-			        {0.0212663385077824,-0.000741605434102429, 0.999773570798835}};
-	double translation[3][1] = {{-233.405463440145},
-					{-1.47986087932354},
-					{20.7515828935872}};
+	Mat src = imread("left_21_2018-11-15-09-47-30-172.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+	Mat mod = imread("left_21_2018-11-15-09-47-30-172.jpg", CV_LOAD_IMAGE_GRAYSCALE);
 
-	double normal[1][3] = {0, 0, -1};
+	for(int r = 0; r < mod.rows; r++)
+	{
+		for (int c = 0; c < mod.cols; c++)
+		{
+			mod.at<uint8_t>(r,c) = mod.at<uint8_t>(r,c) * 0.5;
+		}
+	}
 
-	double distance = 47000;
-
-	stereoParams prm;
-	prm.K = Mat(3, 3, CV_64FC1, Kmat);
-	prm.Kref = Mat(3, 3, CV_64FC1, KmatRef);
-	prm.r = Mat(3, 3, CV_64FC1, rotation);
-	prm.t = Mat(3, 1, CV_64FC1, translation);
-	prm.n = Mat(1, 3, CV_64FC1, normal);
-	prm.d = distance;
-
-	homography H(prm);
-
-	cout << "H =" << endl << " " << H.getHomography() << endl << endl;
-
-	Mat b = H.getHomography();
-	b = prm.K;
-	cout << "H =" << endl << " " << H.getHomography() << endl << endl;
-//	double srcd[1][2] = {1,1};
-//
-//	Mat dst;
-//	Mat src(1,2,CV_64FC1,srcd);
-//	add(src,dst);
-//	cout << "src =" << endl << " " << src << endl << endl;
-//	cout << "dst =" << endl << " " << dst << endl << endl;
-//	srcd[0][0] = {0};
-//	cout << "dst =" << endl << " " << dst << endl << endl;
-
+	imshow("original", src);
+	imshow("modified", mod);
+	waitKey(0);
+	return 0;
 }
 

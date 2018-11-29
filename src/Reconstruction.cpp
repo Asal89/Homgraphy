@@ -9,8 +9,6 @@
 
 Reconstruction::Reconstruction(stereoParams& str, homography& H, Mat& left, Mat& right){
 
-	//Create projection matrix:
-	Mat P = str.
 
 }
 
