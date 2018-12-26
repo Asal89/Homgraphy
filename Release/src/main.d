@@ -720,7 +720,8 @@ src/main.d: ../src/main.cpp \
  /home/jetski/boost_1_65_1/boost/atomic/detail/type_traits/is_function.hpp \
  /home/jetski/boost_1_65_1/boost/atomic/detail/type_traits/conditional.hpp \
  ../src/UEyeOpenCV.hpp ../src/UEyeOpenCVException.hpp ../src/frame.h \
- ../src/utils.hpp ../src/serialib.h ../src/homography.h
+ ../src/utils.hpp ../src/serialib.h ../src/homography.h \
+ ../src/Reconstruction.h
 
 /home/jetski/boost_1_65_1/boost/thread/thread.hpp:
 
@@ -2173,3 +2174,5 @@ src/main.d: ../src/main.cpp \
 ../src/serialib.h:
 
 ../src/homography.h:
+
+../src/Reconstruction.h:

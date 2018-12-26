@@ -118,7 +118,7 @@ cv::Mat UeyeOpencvCam::getFrame() {
 
 void UeyeOpencvCam::getFrame(cv::Mat& mat) {
 	VOID* pMem;
-	INT nRet = is_WaitEvent(hCam, IS_SET_EVENT_FRAME, 1500);
+	INT nRet = is_WaitEvent(hCam, IS_SET_EVENT_FRAME, 2000);
 	if (nRet == IS_TIMED_OUT){
   		mat = Mat::zeros(width , height ,  CV_8UC1);
   		cout << "skiped -- timeout" << endl;

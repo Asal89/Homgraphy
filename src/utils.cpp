@@ -159,3 +159,5 @@ void serialWrite(serialib& serialPort, const char* a){
 	cout << "Write operation is successful" << endl;
 	return;
 }
+
+//TODO: add all upcoming functions to some new classes

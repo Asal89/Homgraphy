@@ -13,6 +13,8 @@ class homography {
 
 public:
 
+	homography() = default;
+
 	homography(stereoParams& par);
 
 	/*
